@@ -27,6 +27,7 @@ import {
   nav,
   services,
   projects,
+  fieldVideos,
   equipment,
   process,
   quoteServices,
@@ -406,7 +407,7 @@ export function Intro() {
         />
         <div className="intro-inset">
           <Photo
-            name="inverter-battery"
+            name="solar-dual-battery"
             alt="Wall-mounted inverter and battery installation"
           />
         </div>
@@ -488,9 +489,12 @@ export function Gallery({ featured = false }: { featured?: boolean }) {
   const items = projects
     .filter((p) => filter === "All" || p.category === filter)
     .slice(0, featured ? 3 : 100);
+  const slides = items.flatMap((p) =>
+    p.images.map((image, photoIndex) => ({ ...p, image, photoIndex })),
+  );
   const next = (d: number) =>
     setIndex((i) =>
-      i === null ? null : (i + d + items.length) % items.length,
+      i === null ? null : (i + d + slides.length) % slides.length,
     );
   useEffect(() => {
     if (index === null) return;
@@ -500,10 +504,10 @@ export function Gallery({ featured = false }: { featured?: boolean }) {
     const key = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIndex(null);
       if (e.key === "ArrowRight")
-        setIndex((i) => (i === null ? null : (i + 1) % items.length));
+        setIndex((i) => (i === null ? null : (i + 1) % slides.length));
       if (e.key === "ArrowLeft")
         setIndex((i) =>
-          i === null ? null : (i - 1 + items.length) % items.length,
+          i === null ? null : (i - 1 + slides.length) % slides.length,
         );
       if (e.key === "Tab") {
         const controls = document.querySelectorAll<HTMLElement>(
@@ -526,7 +530,7 @@ export function Gallery({ featured = false }: { featured?: boolean }) {
       document.removeEventListener("keydown", key);
       opener.current?.focus();
     };
-  }, [index, items.length]);
+  }, [index, slides.length]);
   return (
     <>
       {!featured && (
@@ -557,12 +561,20 @@ export function Gallery({ featured = false }: { featured?: boolean }) {
             <button
               onClick={(e) => {
                 opener.current = e.currentTarget;
-                setIndex(i);
+                setIndex(
+                  items
+                    .slice(0, i)
+                    .reduce(
+                      (total, project) => total + project.images.length,
+                      0,
+                    ),
+                );
               }}
               aria-label={`View ${p.title}`}
             >
               <div className="project-photo">
                 <Photo name={p.image} alt={p.title} />
+                <span className="photo-count">{p.images.length} photos</span>
                 <span className="round-arrow">
                   <Plus />
                 </span>
@@ -583,7 +595,7 @@ export function Gallery({ featured = false }: { featured?: boolean }) {
           className="lightbox"
           role="dialog"
           aria-modal="true"
-          aria-label={items[index].title}
+          aria-label={slides[index].title}
           onClick={(e) => {
             if (e.target === e.currentTarget) setIndex(null);
           }}
@@ -606,28 +618,36 @@ export function Gallery({ featured = false }: { featured?: boolean }) {
               if (Math.abs(dx) > 45) next(dx < 0 ? 1 : -1);
             }}
           >
-            <Photo name={items[index].image} alt={items[index].title} eager />
+            <Photo
+              name={slides[index].image}
+              alt={`${slides[index].title} — photograph ${slides[index].photoIndex + 1}`}
+              eager
+            />
           </div>
           <div className="lightbox-info">
             <small>
-              {index + 1} / {items.length} — {items[index].category}
+              {index + 1} / {slides.length} — {slides[index].category}
             </small>
-            <h2>{items[index].title}</h2>
-            <p>{items[index].description}</p>
+            <h2>{slides[index].title}</h2>
+            <p>{slides[index].description}</p>
+            <div className="collection-position">
+              Photo {slides[index].photoIndex + 1} of{" "}
+              {slides[index].images.length} in this collection
+            </div>
             <a
               className="text-link"
               href={whatsapp(
-                `Hello Light World Engineering, I would like to enquire about ${items[index].title}.`,
+                `Hello Light World Engineering, I would like to enquire about ${slides[index].title}.`,
               )}
             >
               Discuss a similar project <ArrowUpRight size={18} />
             </a>
           </div>
           <div className="lightbox-controls">
-            <button onClick={() => next(-1)} aria-label="Previous project">
+            <button onClick={() => next(-1)} aria-label="Previous photo">
               <ChevronLeft />
             </button>
-            <button onClick={() => next(1)} aria-label="Next project">
+            <button onClick={() => next(1)} aria-label="Next photo">
               <ChevronRight />
             </button>
           </div>
@@ -669,7 +689,7 @@ export function SolutionsShowcase() {
       label: "01 / Assess",
       title: "Start with the site.",
       text: "Site surveys and assessments help define the scope, installation requirements and suitable equipment.",
-      image: "site-survey",
+      image: "survey-woodland",
     },
     {
       label: "02 / Drill",
@@ -768,12 +788,12 @@ export function SolarShowcase() {
     <section className="section solar-showcase wrap">
       <Reveal className="solar-images">
         <Photo
-          name="solar-panels"
-          alt="Solar panels at a Light World project site"
+          name="rooftop-solar-array"
+          alt="Solar panels installed on a tiled roof"
         />
         <div className="solar-detail">
           <Photo
-            name="inverter-battery"
+            name="solar-must-system"
             alt="Inverter connected to battery storage"
           />
           <span>Generation. Storage. Connection.</span>
@@ -874,7 +894,10 @@ export function WhyUs() {
           <br />
           Support that stays within reach.
         </p>
-        <Photo name="geo-survey" alt="Survey assessment equipment display" />
+        <Photo
+          name="pump-water-flow"
+          alt="Light World technician testing water flow at a borehole"
+        />
       </Reveal>
       <div className="accordion">
         {rows.map(([title, text], i) => (
@@ -985,38 +1008,83 @@ export function PageHero({
   );
 }
 export function VideoReel() {
+  const [active, setActive] = useState(0);
   const [play, setPlay] = useState(false);
+  const clip = fieldVideos[active];
   return (
     <section className="video-reel wrap">
       <div className="video-title">
-        <Label>On location</Label>
-        <h2>Engineering in action.</h2>
+        <Label>From the field</Label>
+        <h2>Real people. Real work.</h2>
       </div>
-      <div className="video-frame">
-        {play ? (
-          <video
-            src="/media/project-video.mp4"
-            controls
-            autoPlay
-            playsInline
-            poster="/media/drilling-rig.webp"
-          />
-        ) : (
-          <>
-            <Photo
-              name="drilling-rig"
-              alt="Play the original Light World project video"
-            />
+      <div className="video-library">
+        <div>
+          <div className="video-frame">
+            {play ? (
+              <video
+                key={clip.src}
+                src={clip.src}
+                controls
+                autoPlay
+                playsInline
+                preload="metadata"
+                poster={`/media/${clip.poster}.webp`}
+                aria-label={clip.title}
+              />
+            ) : (
+              <>
+                <Photo
+                  className="video-poster"
+                  name={clip.poster}
+                  alt={clip.title}
+                />
+                <button
+                  onClick={() => setPlay(true)}
+                  aria-label={`Play ${clip.title}`}
+                >
+                  <Play fill="currentColor" />
+                  <span>Watch field footage</span>
+                </button>
+              </>
+            )}
+          </div>
+          <div className="video-active-title" aria-live="polite">
+            <h3>{clip.title}</h3>
+            <span>
+              {String(active + 1).padStart(2, "0")} /{" "}
+              {String(fieldVideos.length).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+        <div
+          className="video-selections"
+          role="group"
+          aria-label="Choose a field video"
+        >
+          {fieldVideos.map((video, i) => (
             <button
-              onClick={() => setPlay(true)}
-              aria-label="Play project video"
+              key={video.src}
+              className={active === i ? "selected" : ""}
+              aria-pressed={active === i}
+              onClick={() => {
+                setActive(i);
+                setPlay(true);
+              }}
             >
-              <Play fill="currentColor" />
-              <span>Watch the field reel</span>
+              <Photo name={video.poster} alt="" />
+              <span>
+                <small>{video.category}</small>
+                {video.title}
+              </span>
+              <Play size={14} aria-hidden="true" />
             </button>
-          </>
-        )}
+          ))}
+        </div>
       </div>
+      <p className="video-source-note">
+        On-site footage from Light World Engineering. Choose a clip to watch the
+        team at work.
+      </p>
     </section>
   );
 }

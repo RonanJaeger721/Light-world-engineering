@@ -22,3 +22,14 @@ A navigation test initially asserted the URL before client navigation completed;
 No live WhatsApp message was sent, no invented submission backend is present, and no physical-device or formal Core Web Vitals certification is claimed.
 
 Production: https://light-world-engineering.vercel.app — published on 17 October 2026. All 11 content routes, robots.txt, sitemap.xml, sampled WebP/logo/font assets and the original MP4 returned HTTP 200. The rendered public homepage was inspected in the browser. Vercel is configured as static hosting for the Next.js export; the initial server-manifest mismatch was corrected before publication.
+
+## Supplied-media update — local checks, 17 October 2026
+
+- Production build and TypeScript validation passed.
+- All 48 gallery photographs decoded successfully.
+- All seven MP4s decoded successfully; all seven poster images exist and decode.
+- Static data checks passed for all collection cover offsets, category filters and next/previous wraparound indices.
+- Service and equipment image references resolve to local files.
+- The user confirmed that the updated local preview works, including the photo collections and selectable field videos. Automated browser checks remain unavailable because browser security policy blocked local preview access.
+
+Supplied-media production update: published to https://light-world-engineering.vercel.app on 17 October 2026 after the user confirmed the local preview works. All 62 media assets and the homepage, projects, solar and equipment routes returned HTTP 200. Media types were correct and file sizes matched the local assets where Content-Length was provided. Public browser interaction testing was not performed because of the browser-policy restriction.

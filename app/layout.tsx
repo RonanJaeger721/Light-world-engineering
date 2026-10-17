@@ -49,7 +49,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <noscript><style>{`.reveal,.hero-copy>div{opacity:1!important;transform:none!important}`}</style></noscript>
+        <noscript>
+          <style>{`.reveal,.hero-copy>div{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         <Navbar />
         <main id="main">{children}</main>
         <Footer />

@@ -50,3 +50,9 @@ SmartView was inspected for floating navigation, large imagery, section rhythm, 
 Vercel project: `light-world-engineering`, under `ronannyaks92-9747s-projects`. `lib/content.ts` holds the canonical production origin. If a custom domain is added later, update that origin and rebuild so canonical links, sitemap and structured data agree.
 
 Secrets, Vercel project state, dependency directories and generated exports are excluded from Git.
+
+## Supplied media update — 17 October 2026
+
+Integrated the supplied local media into eight subject collections containing 48 unique photographs, plus a selectable library of all seven field videos. Dedicated photographs now illustrate pump installation, pipes, rooftop panels, batteries and inverters. Exact duplicates were omitted. The named client report and standalone survey chart were excluded from publication. Related images are presented as subject collections without inventing project/client relationships. `MEDIA-SOURCES.json` records the source filenames.
+
+Gallery filters operate on collections; fullscreen previous/next navigation and swipe traverse the photographs in the selected category. Each collection tile displays its photo count, and the lightbox identifies the current photo within its collection. Video files are loaded only after selection; one player is used for the seven clips.

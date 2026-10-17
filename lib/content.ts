@@ -46,7 +46,7 @@ export const services = [
     tag: "Make more of every sunrise.",
     description:
       "Solar systems shaped around the energy requirements of your home, farm or business. Assessment, supply, installation and support.",
-    image: "solar-panels",
+    image: "rooftop-solar-array",
     href: "/solar",
     items: [
       "Energy assessment & system sizing",
@@ -84,44 +84,114 @@ export const projects = [
   {
     title: "Borehole drilling & casing",
     category: "Borehole Drilling",
-    image: "drilling-rig",
+    image: "drilling-rig-wide",
+    images: [
+      "drilling-rig-wide",
+      "drilling-rig-on-site",
+      "drilling-rig-casing",
+      "drilling-rig",
+    ],
     description:
-      "The drilling rig and casing on site. Part of Light World Engineering’s borehole services, from assessment through to installation.",
+      "Drilling rigs, on-site crews and borehole casing. A collection of the company’s field photographs.",
   },
   {
-    title: "Solar panels on site",
+    title: "Rooftop solar installation",
     category: "Solar Installations",
-    image: "solar-panels",
+    image: "rooftop-solar-array",
+    images: [
+      "rooftop-solar-array",
+      "solar-installation-collage",
+      "solar-panels",
+    ],
     description:
-      "Solar panels photographed at a residential site. Panels form one part of an assessed and specified solar system.",
+      "Rooftop panels, installation work and panels prepared on site, shown in the supplied solar-work collection.",
   },
   {
-    title: "Inverter & battery installation",
-    category: "Solar Installations",
-    image: "inverter-battery",
+    title: "Pump installation & water flow",
+    category: "Borehole Installations",
+    image: "pump-installation-team",
+    images: [
+      "pump-installation-team",
+      "pump-installation-closeup",
+      "pump-water-flow",
+    ],
     description:
-      "A wall-mounted inverter and battery installation, photographed as part of the original Light World Engineering portfolio.",
+      "The crew working with a submersible pump, followed by water flowing at the borehole. Supplied photographs of pump installation and testing.",
   },
   {
     title: "Water storage & solar pumping",
     category: "Water Systems",
     image: "water-tanks",
+    images: [
+      "water-tanks",
+      "elevated-water-tank",
+      "water-system-testing",
+      "water-storage-team",
+      "water-storage-wide",
+      "solar-water-pump-story",
+    ],
     description:
-      "Elevated water storage with solar panels: water and power working together in a single installation.",
+      "A collection of elevated storage tanks, solar-powered water systems and the team working on water connections across different sites.",
   },
   {
-    title: "Site assessment in the field",
-    category: "Equipment & Engineering",
-    image: "site-survey",
+    title: "Inverter & battery installations",
+    category: "Solar Installations",
+    image: "solar-must-battery",
+    images: [
+      "solar-must-battery",
+      "solar-dual-battery",
+      "solar-inverter-dark-battery",
+      "solar-must-system",
+      "inverter-battery",
+    ],
     description:
-      "Site assessment is the starting point for understanding the location and planning a suitable solution.",
+      "Different inverter and battery installations from the supplied portfolio. Each photograph shows an actual installed arrangement; specifications depend on the project.",
   },
   {
-    title: "Pressure tanks & equipment",
-    category: "Equipment & Engineering",
-    image: "pressure-tanks",
+    title: "Borehole flushing & servicing",
+    category: "Borehole Services",
+    image: "borehole-flushing",
+    images: ["borehole-flushing", "borehole-service"],
     description:
-      "Pressure-system equipment shown in the original company gallery. Contact the team for current options and availability.",
+      "Borehole servicing in the field, with the crew working at the casing and clearing discharge.",
+  },
+  {
+    title: "Site surveys in the field",
+    category: "Site Surveys",
+    image: "survey-woodland",
+    images: [
+      "survey-woodland",
+      "survey-woodland-setup",
+      "survey-electrodes",
+      "survey-open-field",
+      "survey-tank-site",
+      "survey-grassland",
+      "site-survey",
+      "survey-building",
+      "survey-rig-site",
+      "survey-residential",
+      "survey-garden",
+      "survey-garden-reading",
+      "survey-courtyard",
+      "survey-truck",
+      "survey-streetside",
+      "survey-streetside-reading",
+      "survey-homestead",
+      "survey-courtyard-team",
+      "survey-homestead-reading",
+      "survey-homestead-instrument",
+      "geo-survey",
+    ],
+    description:
+      "Site-assessment photographs from different locations, showing the team, survey instruments and electrode arrangements. These are field images rather than published client reports.",
+  },
+  {
+    title: "Equipment & supply",
+    category: "Equipment & Engineering",
+    image: "blue-pipes",
+    images: ["blue-pipes", "blue-pipes-closeup", "pressure-tanks", "shop"],
+    description:
+      "Pipes, pressure tanks and equipment photographs supplied by Light World Engineering. Contact the team for current suitability, availability and quotations.",
   },
 ];
 export const equipment = [
@@ -135,19 +205,19 @@ export const equipment = [
   {
     name: "Hybrid inverters",
     category: "Solar & power",
-    image: "inverter-battery",
+    image: "solar-inverter-dark-battery",
     description: "Inverters for solar, battery and grid integration.",
   },
   {
     name: "Lithium batteries",
     category: "Solar & power",
-    image: "inverter-battery",
+    image: "solar-must-battery",
     description: "Battery storage for solar systems and backup power.",
   },
   {
     name: "Borehole pumps",
     category: "Water & boreholes",
-    image: "water-tanks",
+    image: "pump-installation-team",
     description:
       "Submersible and surface pumps for borehole and water systems.",
     context: true,
@@ -155,7 +225,7 @@ export const equipment = [
   {
     name: "Pipes & casing",
     category: "Water & boreholes",
-    image: "shop",
+    image: "blue-pipes",
     description: "Pipes and casing for borehole, water and pressure systems.",
     context: true,
   },
@@ -223,4 +293,49 @@ export const quoteServices = [
   "Water systems",
   "Equipment supply",
   "Other",
+];
+
+export const fieldVideos = [
+  {
+    title: "Borehole rig at work",
+    category: "Borehole drilling",
+    src: "/media/project-video.mp4",
+    poster: "field-video-4-poster",
+  },
+  {
+    title: "Drilling in progress",
+    category: "Borehole drilling",
+    src: "/media/field-video-1.mp4",
+    poster: "field-video-1-poster",
+  },
+  {
+    title: "Borehole fieldwork",
+    category: "Borehole drilling",
+    src: "/media/field-video-2.mp4",
+    poster: "field-video-2-poster",
+  },
+  {
+    title: "Drilling site overview",
+    category: "Borehole drilling",
+    src: "/media/field-video-3.mp4",
+    poster: "field-video-3-poster",
+  },
+  {
+    title: "Solar installation walkthrough",
+    category: "Solar installation",
+    src: "/media/field-video-5.mp4",
+    poster: "field-video-5-poster",
+  },
+  {
+    title: "Inverter & battery detail",
+    category: "Solar installation",
+    src: "/media/field-video-6.mp4",
+    poster: "field-video-6-poster",
+  },
+  {
+    title: "Solar control system",
+    category: "Solar installation",
+    src: "/media/field-video-7.mp4",
+    poster: "field-video-7-poster",
+  },
 ];

@@ -38,7 +38,7 @@ const pages: Record<
     accent: "Lasting connections.",
     description:
       "Borehole, water and solar solutions for homes, farms, businesses and institutions across Zimbabwe.",
-    image: "site-survey",
+    image: "survey-woodland-setup",
   },
   services: {
     title: "Engineering Services",
@@ -65,7 +65,7 @@ const pages: Record<
     accent: "Expertly connected.",
     description:
       "Solar installations, inverters, battery systems and repairs, shaped around your energy requirements.",
-    image: "solar-panels",
+    image: "rooftop-solar-array",
   },
   projects: {
     title: "Projects & Field Gallery",
@@ -73,7 +73,7 @@ const pages: Record<
     heading: "Real work.",
     accent: "A closer look.",
     description:
-      "Original photographs of our drilling equipment, solar installations, water systems and work in the field.",
+      "Photo collections of borehole drilling, pump installation, rooftop solar, water systems and site surveys.",
   },
   equipment: {
     title: "Equipment & Supplies",
@@ -344,9 +344,8 @@ export default async function Page({
             <div className="portfolio-intro">
               <Label>Original company imagery</Label>
               <p>
-                Explore by category. Select a photograph to view it fullscreen
-                and learn more. Use the arrow keys or swipe to move through the
-                gallery.
+                Explore by category. Open a collection to view the photographs
+                fullscreen. Use the arrow keys or swipe to move between photos.
               </p>
             </div>
             <Gallery />

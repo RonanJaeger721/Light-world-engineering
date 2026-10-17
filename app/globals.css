@@ -2885,7 +2885,11 @@ textarea {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .reveal,.hero-copy>div { opacity:1!important;transform:none!important; }
+  .reveal,
+  .hero-copy > div {
+    opacity: 1 !important;
+    transform: none !important;
+  }
   html {
     scroll-behavior: auto;
   }
@@ -2901,5 +2905,202 @@ textarea {
   }
   .water-image > img {
     transform: none !important;
+  }
+}
+
+/* Supplied field photography and selectable project footage. */
+.photo-count {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #07182bd9;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 3px;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+.collection-position {
+  margin-top: 18px;
+  font-size: 10px;
+  color: #b6c7d3;
+  letter-spacing: 0.04em;
+}
+.video-library {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 28px;
+  align-items: start;
+  min-width: 0;
+}
+.video-library > div {
+  min-width: 0;
+}
+.video-library .video-frame {
+  height: 540px;
+  border-radius: 5px;
+  background: #0b1b30;
+}
+.video-frame > .video-poster {
+  object-fit: contain;
+  filter: brightness(0.8);
+}
+.video-active-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+.video-active-title h3 {
+  font-size: 20px;
+}
+.video-active-title > span {
+  font-size: 10px;
+  color: var(--steel);
+  white-space: nowrap;
+}
+.video-selections {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 540px;
+  overflow-y: auto;
+  padding-right: 5px;
+  scrollbar-width: thin;
+  scrollbar-color: #a5b6c3 transparent;
+}
+.video-selections button {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  flex-shrink: 0;
+  min-height: 78px;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 8px 15px 8px 8px;
+  transition:
+    background 0.25s,
+    border-color 0.25s;
+}
+.video-selections button.selected {
+  background: #e5edf1;
+  border-color: #8199ab;
+}
+.video-selections button:hover {
+  background: #e9eef1;
+}
+.video-selections img {
+  width: 55px;
+  height: 62px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.video-selections button > span {
+  flex: 1;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.video-selections small {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 4px;
+}
+.video-selections svg {
+  color: var(--steel);
+}
+.video-source-note {
+  font-size: 11px;
+  margin-top: 22px;
+  max-width: none;
+}
+@media (max-width: 900px) {
+  .video-library {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+  }
+  .video-library .video-frame {
+    height: 490px;
+  }
+  .video-selections {
+    max-height: 490px;
+  }
+  .video-selections button {
+    gap: 12px;
+    padding-right: 10px;
+  }
+  .video-selections button > span {
+    font-size: 11px;
+  }
+  .video-selections img {
+    width: 42px;
+    height: 55px;
+  }
+}
+@media (max-width: 760px) {
+  .video-library {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .video-library .video-frame {
+    height: 460px;
+  }
+  .video-selections {
+    flex-direction: row;
+    overflow-y: hidden;
+    overflow-x: auto;
+    max-height: none;
+    gap: 10px;
+    padding: 0 0 8px;
+    scroll-snap-type: x proximity;
+  }
+  .video-selections button {
+    width: 220px;
+    scroll-snap-align: start;
+    padding: 9px;
+    min-height: 80px;
+  }
+  .video-selections img {
+    width: 48px;
+    height: 62px;
+  }
+  .video-selections button > span {
+    font-size: 11px;
+  }
+  .video-selections small {
+    font-size: 7px;
+  }
+  .video-active-title h3 {
+    font-size: 19px;
+  }
+  .video-source-note {
+    font-size: 10px;
+  }
+  .photo-count {
+    font-size: 8px;
+    top: 12px;
+    left: 12px;
+  }
+}
+@media (max-width: 390px) {
+  .video-library .video-frame {
+    height: 420px;
+  }
+  .video-active-title h3 {
+    font-size: 17px;
+  }
+  .gallery:not(.featured) .photo-count {
+    font-size: 7px;
+    padding: 5px 7px;
+    top: 10px;
+    left: 10px;
   }
 }
