@@ -6,8 +6,6 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   motion,
   useReducedMotion,
-  useScroll,
-  useTransform,
 } from "motion/react";
 import {
   ArrowUpRight,
@@ -19,8 +17,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Play,
+  Pause,
   MessageCircle,
-  ArrowDown,
 } from "lucide-react";
 import {
   company,
@@ -337,23 +335,50 @@ export function WhatsApp() {
 
 export function Hero() {
   const reduce = useReducedMotion();
-  const { scrollY } = useScroll();
-  const drift = useTransform(scrollY, [0, 1000], [0, 110]);
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [focused, setFocused] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const section = useRef<HTMLElement>(null);
+  const elapsed = useRef(0);
+  const slides = [
+    { image: "rig-sunset", label: "Our rigs", alt: "Light World Engineering drilling rig at sunset" },
+    { image: "rooftop-solar-array", label: "Solar installations", alt: "Installed rooftop solar panels" },
+    { image: "completed-tank-system", label: "Water systems", alt: "Completed branded tank installation and water connections" },
+    { image: "client-handover-group", label: "Client handovers", alt: "Light World team meeting clients at a project site" },
+  ];
+  const running = !paused && !reduce && visible && !focused;
+  const select = (index: number) => { elapsed.current = 0; setProgress(0); setActive((index + slides.length) % slides.length); };
+  useEffect(() => {
+    const update = () => setVisible(!document.hidden && !!section.current && section.current.getBoundingClientRect().bottom > 0);
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting && !document.hidden));
+    if (section.current) observer.observe(section.current);
+    document.addEventListener("visibilitychange", update);
+    return () => { observer.disconnect(); document.removeEventListener("visibilitychange", update); };
+  }, []);
+  useEffect(() => {
+    if (!running) return;
+    let previous = performance.now();
+    let frame: number;
+    const tick = (now: number) => {
+      elapsed.current += Math.min(now - previous, 100); previous = now;
+      if (elapsed.current >= 3000) { elapsed.current = 0; setActive(value => (value + 1) % 4); }
+      setProgress(elapsed.current / 3000);
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [running]);
   return (
-    <section className="hero">
-      <motion.div
-        className="hero-photo"
-        style={{ y: reduce ? 0 : drift }}
-        initial={{ scale: reduce ? 1 : 1.06 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.8 }}
-      >
-        <Photo
-          name="drilling-rig"
-          alt="Light World Engineering drilling rig and blue borehole casing on site"
-          eager
-        />
-      </motion.div>
+    <section className="hero" ref={section} aria-label="Light World Engineering project highlights">
+      <div className="hero-photo">
+        {slides.map((slide, index) => (
+          <div key={slide.label} className={`hero-scene ${active === index ? "is-active" : ""}`} aria-hidden={active !== index}>
+            <Photo name={slide.image} alt={slide.alt} eager />
+          </div>
+        ))}
+      </div>
       <div className="hero-shade" />
       <div className="hero-copy wrap">
         <motion.div
@@ -382,16 +407,18 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
-      <div className="hero-bottom wrap">
-        <a href="#introduction" className="scroll-link">
-          <ArrowDown size={16} /> Discover Light World
-        </a>
-        <span>BOREHOLE / SOLAR / WATER</span>
-        <span>
-          Practical engineering.
-          <br />
-          Real possibilities.
-        </span>
+      <div className="hero-bottom wrap hero-controls" onFocusCapture={() => setFocused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
+        <div className="hero-tracks" role="group" aria-label="Choose hero scene">
+          {slides.map((slide, index) => <button key={slide.label} type="button" aria-label={`Show ${slide.label}`} aria-pressed={active === index} onClick={() => select(index)}>
+            <span className="hero-track"><span style={{ transform: `scaleX(${index === active ? progress : index < active ? 1 : 0})` }} /></span>
+            <span className="hero-track-label">0{index + 1}<span>{slide.label}</span></span>
+          </button>)}
+        </div>
+        <div className="hero-playback">
+          <button type="button" aria-label="Previous hero scene" onClick={() => select(active - 1)}><ChevronLeft size={18}/></button>
+          <button type="button" aria-label={paused ? "Play hero slideshow" : "Pause hero slideshow"} aria-pressed={paused} disabled={!!reduce} title={reduce ? "Automatic motion disabled by your reduced-motion preference" : undefined} onClick={() => setPaused(value => !value)}>{paused ? <Play size={16}/> : <Pause size={16}/>}</button>
+          <button type="button" aria-label="Next hero scene" onClick={() => select(active + 1)}><ChevronRight size={18}/></button>
+        </div>
       </div>
     </section>
   );

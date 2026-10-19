@@ -33,3 +33,17 @@ Production: https://light-world-engineering.vercel.app — published on 17 Octob
 - The user confirmed that the updated local preview works, including the photo collections and selectable field videos. Automated browser checks remain unavailable because browser security policy blocked local preview access.
 
 Supplied-media production update: published to https://light-world-engineering.vercel.app on 17 October 2026 after the user confirmed the local preview works. All 62 media assets and the homepage, projects, solar and equipment routes returned HTTP 200. Media types were correct and file sizes matched the local assets where Content-Length was provided. Public browser interaction testing was not performed because of the browser-policy restriction.
+
+## 19 October 2026 — client media and hero refinement
+- Preserved the approved layout and stable hero copy. Added four selectable hero scenes, an eight-second progress timer, pause/previous/next controls, focus/visibility pauses and reduced-motion handling.
+- Added 12 distinct supplied photographs, including client handovers and completed water installations. Portfolio now contains 9 collections and 60 photographs.
+- Added all 6 supplied videos to the selectable player (13 full clips total), plus an 8-second silent drilling excerpt for the hero. Rotated the sideways water-flow video upright.
+- Darkened light-surface heading accents and secondary text. Retained existing contrast overrides on dark sections.
+- Reviewed Nakiso's public service journey and client-proof presentation; copied no competitor claims or client content.
+- Excluded private chat screenshots, the phone-status screenshot and the near-duplicate pump photograph. Source mapping is in MEDIA-SOURCES.json.
+- Validation: production build and TypeScript passed; gallery/filter/offset/wraparound and media-reference assertions passed; all photos/posters and new videos decoded successfully; all 11 content routes passed SEO checks.
+- Local preview: http://localhost:3001/. Automated browser inspection was not performed because of the earlier browser security-policy rejection. Current responsive rendering, timer interaction and playback need visual review. This revision has not been published.
+
+
+### Final hero direction � 19 October
+Revised to an image-only hero as requested: rig at sunset, solar installation, completed water tanks and client handover. Each photograph remains for 3 seconds, with a 900 ms crossfade and subtle image movement. The stable heading, visible timer, manual controls and reduced-motion handling remain. Full videos stay selectable in the field library; posters use clearer installation and handover moments. Nakiso informed the emphasis on rigs, completed systems and clients rather than copied styling or claims.

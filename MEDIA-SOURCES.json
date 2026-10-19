@@ -191,6 +191,54 @@
     {
       "asset": "drilling-rig.webp",
       "source": "WhatsApp Image 2026-07-16 at 00.33.40.jpeg"
+    },
+    {
+      "asset": "project-team.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.04.43.jpeg"
+    },
+    {
+      "asset": "client-handover-group.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.04.44.jpeg"
+    },
+    {
+      "asset": "client-handover.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.04.46.jpeg"
+    },
+    {
+      "asset": "survey-tree-reading.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.04.47.jpeg"
+    },
+    {
+      "asset": "survey-tree.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.04.47 (1).jpeg"
+    },
+    {
+      "asset": "solar-roof-technician.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.04.48 (1).jpeg"
+    },
+    {
+      "asset": "completed-tank-system.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.05.03.jpeg"
+    },
+    {
+      "asset": "completed-green-tank.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.05.04.jpeg"
+    },
+    {
+      "asset": "water-filtration-connections.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.05.04 (1).jpeg"
+    },
+    {
+      "asset": "rig-sunset.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.05.04 (2).jpeg"
+    },
+    {
+      "asset": "finished-casing.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.05.05.jpeg"
+    },
+    {
+      "asset": "branded-drilling-truck.webp",
+      "source": "Lightworld updated/WhatsApp Image 2026-10-19 at 10.05.05 (2).jpeg"
     }
   ],
   "videos": [
@@ -235,11 +283,49 @@
       "source": "WhatsApp Video 2026-07-16 at 00.16.32.mp4",
       "durationSeconds": 23.42,
       "poster": "field-video-7-poster.webp"
+    },
+    {
+      "asset": "updated-field-1.mp4",
+      "source": "Lightworld updated/WhatsApp Video 2026-10-19 at 10.04.45.mp4",
+      "durationSeconds": 53.1,
+      "poster": "updated-field-1-poster.webp"
+    },
+    {
+      "asset": "updated-field-2.mp4",
+      "source": "Lightworld updated/WhatsApp Video 2026-10-19 at 10.04.49.mp4",
+      "durationSeconds": 22.85,
+      "poster": "updated-field-2-poster.webp"
+    },
+    {
+      "asset": "updated-field-3.mp4",
+      "source": "Lightworld updated/WhatsApp Video 2026-10-19 at 10.04.50.mp4",
+      "durationSeconds": 30.05,
+      "poster": "updated-field-3-poster.webp"
+    },
+    {
+      "asset": "updated-field-4.mp4",
+      "source": "Lightworld updated/WhatsApp Video 2026-10-19 at 10.04.51.mp4",
+      "durationSeconds": 26.59,
+      "poster": "updated-field-4-poster.webp"
+    },
+    {
+      "asset": "updated-field-5.mp4",
+      "source": "Lightworld updated/WhatsApp Video 2026-10-19 at 10.04.54.mp4",
+      "durationSeconds": 10.53,
+      "poster": "updated-field-5-poster.webp"
+    },
+    {
+      "asset": "updated-field-6.mp4",
+      "source": "Lightworld updated/WhatsApp Video 2026-10-19 at 10.04.56.mp4",
+      "durationSeconds": 9.1,
+      "poster": "updated-field-6-poster.webp"
     }
   ],
   "notes": [
     "Exact duplicate images are omitted.",
     "The named client report and standalone survey graph are not published in the gallery.",
-    "Collections group related subject matter, without asserting a shared client, site or project."
+    "Collections group related subject matter, without asserting a shared client, site or project.",
+    "19 October update: private chat screenshots and status screenshot excluded; near-duplicate pump photograph omitted. New clip 2 rotated upright. Hero uses an eight-second silent excerpt; full clips remain in the video library.",
+    "Final hero uses only photographs at three-second intervals; the silent hero excerpt was removed. Selected video posters use clearer frames from the supplied footage."
   ]
 }

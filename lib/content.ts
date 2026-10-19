@@ -82,10 +82,20 @@ export const services = [
 ];
 export const projects = [
   {
+    title: "People behind the projects",
+    category: "Client Handovers",
+    image: "client-handover-group",
+    images: ["client-handover-group", "client-handover", "project-team"],
+    description: "Meetings, handshakes and moments with clients and the Light World Engineering team on site.",
+  },
+  {
     title: "Borehole drilling & casing",
     category: "Borehole Drilling",
-    image: "drilling-rig-wide",
+    image: "branded-drilling-truck",
     images: [
+      "branded-drilling-truck",
+      "rig-sunset",
+      "finished-casing",
       "drilling-rig-wide",
       "drilling-rig-on-site",
       "drilling-rig-casing",
@@ -100,6 +110,7 @@ export const projects = [
     image: "rooftop-solar-array",
     images: [
       "rooftop-solar-array",
+      "solar-roof-technician",
       "solar-installation-collage",
       "solar-panels",
     ],
@@ -121,8 +132,11 @@ export const projects = [
   {
     title: "Water storage & solar pumping",
     category: "Water Systems",
-    image: "water-tanks",
+    image: "completed-tank-system",
     images: [
+      "completed-tank-system",
+      "completed-green-tank",
+      "water-filtration-connections",
       "water-tanks",
       "elevated-water-tank",
       "water-system-testing",
@@ -158,8 +172,10 @@ export const projects = [
   {
     title: "Site surveys in the field",
     category: "Site Surveys",
-    image: "survey-woodland",
+    image: "survey-tree",
     images: [
+      "survey-tree",
+      "survey-tree-reading",
       "survey-woodland",
       "survey-woodland-setup",
       "survey-electrodes",
@@ -296,6 +312,12 @@ export const quoteServices = [
 ];
 
 export const fieldVideos = [
+  { title: "Clients and crew on site", category: "Client Handovers", src: "/media/updated-field-1.mp4", poster: "updated-field-1-poster" },
+  { title: "Water flowing at the borehole", category: "Borehole Drilling", src: "/media/updated-field-2.mp4", poster: "updated-field-2-poster" },
+  { title: "Drilling in progress", category: "Borehole Drilling", src: "/media/updated-field-3.mp4", poster: "updated-field-3-poster" },
+  { title: "Solar installation in progress", category: "Solar Installations", src: "/media/updated-field-4.mp4", poster: "updated-field-4-poster" },
+  { title: "Meeting clients at the rig", category: "Client Handovers", src: "/media/updated-field-5.mp4", poster: "updated-field-5-poster" },
+  { title: "A handshake on site", category: "Client Handovers", src: "/media/updated-field-6.mp4", poster: "updated-field-6-poster" },
   {
     title: "Borehole rig at work",
     category: "Borehole drilling",
