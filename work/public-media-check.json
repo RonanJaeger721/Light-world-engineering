@@ -1,0 +1,11 @@
+{
+  "base": "https://light-world-engineering.vercel.app",
+  "status": "passed",
+  "assets": 62,
+  "routes": [
+    "/",
+    "/projects/",
+    "/solar/",
+    "/equipment/"
+  ]
+}

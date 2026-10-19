@@ -1,0 +1,17 @@
+{
+  "base": "https://light-world-engineering.vercel.app",
+  "layouts": [],
+  "interactions": [
+    "Navbar: hides at 1px down, returns at 1px up",
+    "Borehole showcase: image, label and text update",
+    "Why Light World accordion",
+    "Original MP4 playback",
+    "Project filtering, lightbox, previous/next arrows and Escape",
+    "Equipment filters, category deep link and contextual WhatsApp enquiry",
+    "Quote validates, preserves service, encodes all fields and prepares correct WhatsApp recipient; no message sent",
+    "Mobile menu opens, closes and navigates",
+    "Reduced motion retains content",
+    "Both verified call and email destinations"
+  ],
+  "errors": []
+}
